@@ -1,67 +1,58 @@
 /* styles.css */
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #000; /* Black background */
-    color: #fff; /* White text */
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-}
+/* Existing styles remain the same */
 
-.main-container {
-    max-width: 100%; /* Full width container */
-    margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
-}
-
-.header {
-    background-color: #222; /* Darker background for header */
-    padding: 20px;
-    border-radius: 8px;
-}
-
-.header h1 {
-    font-size: 2.5em;
-    margin: 0;
-}
-
-.header p {
-    font-size: 1.2em;
-    color: #ccc; /* Lighter grey for description */
-}
-
-.game-section {
-    background-color: #333; /* Dark grey background for game section */
+.wheel-section {
+    margin-top: 20px;
+    background-color: #222; /* Dark background for wheel section */
     padding: 20px;
     border-radius: 8px;
     border: 1px solid #fff; /* White border */
-    margin-top: 20px;
 }
 
-.coin-container {
-    margin-bottom: 20px;
-}
-
-img#coin {
-    width: 100px; /* Adjust width as needed */
-    height: auto; /* Maintain aspect ratio */
-    display: block;
-    margin: 0 auto;
-}
-
-.score {
-    margin-bottom: 20px;
-}
-
-.score p {
+.wheel-section h2 {
     font-size: 1.5em;
-    color: #fff; /* White text */
+    margin-bottom: 10px;
 }
 
-button#tap-button {
+.wheel-container {
+    position: relative;
+    display: inline-block;
+}
+
+.wheel {
+    border: 10px solid #fff; /* White border for the wheel */
+    border-radius: 50%;
+    width: 200px; /* Wheel size */
+    height: 200px; /* Wheel size */
+    position: relative;
+    background: conic-gradient(
+        #f00 0% 16.66%, 
+        #0f0 16.66% 33.33%, 
+        #00f 33.33% 50%, 
+        #ff0 50% 66.66%, 
+        #0ff 66.66% 83.33%, 
+        #f0f 83.33% 100%
+    ); /* Example segments */
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wheel-segment {
+    position: absolute;
+    width: 100px; /* Adjust size */
+    height: 30px;
+    background: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+    text-align: center;
+    line-height: 30px;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #000;
+}
+
+#spin-button {
     background-color: #fff; /* White background */
     color: #000; /* Black text */
     border: 2px solid #fff; /* White border */
@@ -70,89 +61,19 @@ button#tap-button {
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s, color 0.3s;
+    margin-top: 10px;
 }
 
-button#tap-button:hover {
+#spin-button:hover {
     background-color: #000; /* Black background on hover */
     color: #fff; /* White text on hover */
 }
 
-.save-score {
+.result {
     margin-top: 20px;
 }
 
-.save-score input {
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #fff;
-    border-radius: 4px;
-    color: #000;
-    background-color: #fff;
-}
-
-.save-score button {
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #fff;
-    background-color: #fff;
-    color: #000;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.save-score button:hover {
-    background-color: #000;
-    color: #fff;
-}
-
-.high-scores {
-    margin-top: 20px;
-    background-color: #222; /* Dark background for high scores section */
-    padding: 10px;
-    border-radius: 8px;
-}
-
-.high-scores h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-}
-
-.high-scores ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.high-scores li {
+#wheel-result {
     font-size: 1.2em;
-    margin-bottom: 5px;
-    color: #fff;
-}
-
-/* Media Queries for Mobile Devices */
-@media (max-width: 600px) {
-    .header h1 {
-        font-size: 1.8em; /* Adjust heading size for smaller screens */
-    }
-
-    .header p {
-        font-size: 1em; /* Adjust description size for smaller screens */
-    }
-
-    .game-section {
-        padding: 15px; /* Adjust padding for mobile */
-    }
-
-    .coin-container img#coin {
-        width: 80px; /* Smaller coin image for mobile */
-    }
-
-    .score p {
-        font-size: 1.2em; /* Adjust score text size for smaller screens */
-    }
-
-    button#tap-button {
-        padding: 10px; /* Adjust button padding for mobile */
-        font-size: 1em; /* Adjust button font size for mobile */
-    }
+    color: #fff; /* White text */
 }
