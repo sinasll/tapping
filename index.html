@@ -7,16 +7,23 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="game-container">
-        <h1>Earn Sins</h1>
-        <div class="coin-container">
-            <!-- Coin image -->
-            <img src="coin.png" alt="Coin" id="coin" />
+    <div class="main-container">
+        <header class="header">
+            <h1>Earn Sins</h1>
+            <p>Tap to collect coins and earn your sins!</p>
+        </header>
+        <div class="game-section">
+            <div class="coin-container">
+                <img src="coin.png" alt="Coin" id="coin" />
+            </div>
+            <div class="score">
+                <p>Coins Collected: <span id="score">0</span></p>
+            </div>
+            <button id="tap-button">Tap to Collect Coin</button>
         </div>
-        <div class="score">
-            <p>Coins Collected: <span id="score">0</span></p>
-        </div>
-        <button id="tap-button">Tap to Collect Coin</button>
+        <footer class="footer">
+            <p>&copy; 2024 Earn Sins. All rights reserved.</p>
+        </footer>
     </div>
     <script src="script.js"></script>
 </body>
