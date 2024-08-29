@@ -1,42 +1,61 @@
 /* styles.css */
+
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
     margin: 0;
-    background-color: #f0f0f0;
+    padding: 0;
+    text-align: center;
 }
 
 .game-container {
-    text-align: center;
-    border: 2px solid #333;
     padding: 20px;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #333; /* Dark grey background for the game container */
+    border-radius: 8px;
+    border: 1px solid #fff; /* White border */
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #fff; /* White text */
 }
 
 .coin-container {
-    margin: 20px 0;
+    margin-bottom: 20px;
 }
 
-#coin {
-    width: 100px;
-    cursor: pointer;
+img#coin {
+    width: 100px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin: 0 auto;
 }
 
 .score {
-    margin: 20px 0;
+    margin-bottom: 20px;
 }
 
-#tap-button {
+.score p {
+    font-size: 1.5em;
+    color: #fff; /* White text */
+}
+
+button#tap-button {
+    background-color: #fff; /* White background */
+    color: #000; /* Black text */
+    border: 2px solid #fff; /* White border */
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 1.2em;
     cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button#tap-button:hover {
+    background-color: #000; /* Black background on hover */
+    color: #fff; /* White text on hover */
 }
