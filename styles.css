@@ -1,79 +1,97 @@
 /* styles.css */
-
-/* Existing styles remain the same */
-
-.wheel-section {
-    margin-top: 20px;
-    background-color: #222; /* Dark background for wheel section */
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #fff; /* White border */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
 }
 
-.wheel-section h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.page {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.header p {
+    font-size: 1.2rem;
+}
+
+.game-section, .wheel-section {
+    text-align: center;
+}
+
+.coin-container img {
+    width: 100px;
+    height: auto;
+}
+
+.score p {
+    font-size: 1.5rem;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
 .wheel-container {
-    position: relative;
-    display: inline-block;
+    text-align: center;
 }
 
 .wheel {
-    border: 10px solid #fff; /* White border for the wheel */
+    border: 10px solid #000;
     border-radius: 50%;
-    width: 200px; /* Wheel size */
-    height: 200px; /* Wheel size */
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
     position: relative;
-    background: conic-gradient(
-        #f00 0% 16.66%, 
-        #0f0 16.66% 33.33%, 
-        #00f 33.33% 50%, 
-        #ff0 50% 66.66%, 
-        #0ff 66.66% 83.33%, 
-        #f0f 83.33% 100%
-    ); /* Example segments */
-    margin: 0 auto;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
 
 .wheel-segment {
+    width: 50%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    width: 100px; /* Adjust size */
-    height: 30px;
-    background: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
-    text-align: center;
-    line-height: 30px;
-    border-radius: 5px;
-    font-size: 1em;
-    color: #000;
+    background-color: #fff;
+    border: 1px solid #000;
 }
 
-#spin-button {
-    background-color: #fff; /* White background */
-    color: #000; /* Black text */
-    border: 2px solid #fff; /* White border */
-    padding: 10px 20px;
-    font-size: 1.2em;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
-    margin-top: 10px;
-}
+.wheel-segment:nth-child(1) { transform: rotate(0deg); }
+.wheel-segment:nth-child(2) { transform: rotate(60deg); }
+.wheel-segment:nth-child(3) { transform: rotate(120deg); }
+.wheel-segment:nth-child(4) { transform: rotate(180deg); }
+.wheel-segment:nth-child(5) { transform: rotate(240deg); }
+.wheel-segment:nth-child(6) { transform: rotate(300deg); }
 
-#spin-button:hover {
-    background-color: #000; /* Black background on hover */
-    color: #fff; /* White text on hover */
-}
-
-.result {
-    margin-top: 20px;
-}
-
-#wheel-result {
-    font-size: 1.2em;
-    color: #fff; /* White text */
+.navigation {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    padding: 10px;
+    background-color: #fff;
 }
