@@ -8,47 +8,52 @@
 </head>
 <body>
     <div class="main-container">
-        <header class="header">
-            <h1>Earn Sins</h1>
-            <p>Tap to collect coins and earn your sins!</p>
-        </header>
-        <div class="game-section">
-            <div class="coin-container">
-                <img src="coin.png" alt="Coin" id="coin" />
-            </div>
-            <div class="score">
-                <p>Coins Collected: <span id="score">0</span></p>
-            </div>
-            <button id="tap-button">Tap to Collect Coin</button>
-            <div class="save-score">
-                <input type="hidden" id="telegram-username" value="" /> <!-- Hidden field for Telegram username -->
-                <button id="save-button">Save Score</button>
-            </div>
-            <div class="high-scores">
-                <h2>High Scores</h2>
-                <ul id="high-scores-list"></ul>
-            </div>
-        </div>
-        <div class="wheel-section">
-            <h2>Spin the Wheel</h2>
-            <div class="wheel-container">
-                <div class="wheel" id="wheel">
-                    <div class="wheel-segment">10 Coins</div>
-                    <div class="wheel-segment">20 Coins</div>
-                    <div class="wheel-segment">30 Coins</div>
-                    <div class="wheel-segment">50 Coins</div>
-                    <div class="wheel-segment">100 Coins</div>
-                    <div class="wheel-segment">Try Again</div>
+        <!-- Coin Collection Game Section -->
+        <div id="collecting-page" class="page">
+            <header class="header">
+                <h1>Earn Sins</h1>
+                <p>Tap to collect coins!</p>
+            </header>
+            <div class="game-section">
+                <div class="coin-container">
+                    <img src="coin.png" alt="Coin" id="coin" />
                 </div>
-                <button id="spin-button">Spin the Wheel</button>
-            </div>
-            <div class="result">
-                <p id="wheel-result">Result will be shown here</p>
+                <div class="score">
+                    <p>Coins Collected: <span id="score">0</span></p>
+                </div>
+                <button id="tap-button">Tap to Collect Coin</button>
             </div>
         </div>
-        <footer class="footer">
-            <p>&copy; 2024 Earn Sins. All rights reserved.</p>
-        </footer>
+
+        <!-- Wheel Game Section -->
+        <div id="wheel-page" class="page hidden">
+            <header class="header">
+                <h1>Earn Sins</h1>
+                <p>Spin the wheel for rewards!</p>
+            </header>
+            <div class="wheel-section">
+                <div class="wheel-container">
+                    <div class="wheel" id="wheel">
+                        <div class="wheel-segment">10 Coins</div>
+                        <div class="wheel-segment">20 Coins</div>
+                        <div class="wheel-segment">30 Coins</div>
+                        <div class="wheel-segment">50 Coins</div>
+                        <div class="wheel-segment">100 Coins</div>
+                        <div class="wheel-segment">Try Again</div>
+                    </div>
+                    <button id="spin-button">Spin the Wheel</button>
+                </div>
+                <div class="result">
+                    <p id="wheel-result">Result will be shown here</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="navigation">
+            <button id="show-collecting-page">Collect Coins</button>
+            <button id="show-wheel-page">Spin the Wheel</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
