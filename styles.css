@@ -10,8 +10,8 @@ body {
 }
 
 .game-container {
-    padding: 20px;
-    max-width: 600px;
+    padding: 10px;
+    max-width: 90%;
     margin: 0 auto;
     background-color: #333; /* Dark grey background for the game container */
     border-radius: 8px;
@@ -19,7 +19,7 @@ body {
 }
 
 h1 {
-    font-size: 2.5em;
+    font-size: 1.8em;
     margin-bottom: 20px;
     color: #fff; /* White text */
 }
@@ -29,7 +29,7 @@ h1 {
 }
 
 img#coin {
-    width: 100px; /* Adjust width as needed */
+    width: 80px; /* Adjust width for smaller screens */
     height: auto; /* Maintain aspect ratio */
     display: block;
     margin: 0 auto;
@@ -40,7 +40,7 @@ img#coin {
 }
 
 .score p {
-    font-size: 1.5em;
+    font-size: 1.2em;
     color: #fff; /* White text */
 }
 
@@ -48,8 +48,8 @@ button#tap-button {
     background-color: #fff; /* White background */
     color: #000; /* Black text */
     border: 2px solid #fff; /* White border */
-    padding: 10px 20px;
-    font-size: 1.2em;
+    padding: 10px 15px; /* Adjust padding for mobile */
+    font-size: 1em;
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s, color 0.3s;
@@ -58,4 +58,24 @@ button#tap-button {
 button#tap-button:hover {
     background-color: #000; /* Black background on hover */
     color: #fff; /* White text on hover */
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5em; /* Adjust heading size for smaller screens */
+    }
+
+    .coin-container img#coin {
+        width: 60px; /* Smaller coin image for mobile */
+    }
+
+    .score p {
+        font-size: 1em; /* Adjust score text size for smaller screens */
+    }
+
+    button#tap-button {
+        padding: 10px; /* Adjust button padding for mobile */
+        font-size: 0.9em; /* Adjust button font size for mobile */
+    }
 }
