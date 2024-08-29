@@ -2,47 +2,15 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     let score = 0;
+    const scoreElement = document.getElementById('score');
+    const collectingPage = document.getElementById('collecting-page');
+    const wheelPage = document.getElementById('wheel-page');
+    const showCollectingPageButton = document.getElementById('show-collecting-page');
+    const showWheelPageButton = document.getElementById('show-wheel-page');
 
     // Function to update score on screen
     function updateScore() {
-        document.getElementById('score').textContent = score;
-    }
-
-    // Function to save score to the backend
-    function saveScore(username, score) {
-        fetch('https://your-backend-url.com/save-score', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ username, score })
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Score saved:', data);
-            displayHighScores(); // Refresh high scores list after saving
-        })
-        .catch(error => {
-            console.error('Error saving score:', error);
-        });
-    }
-
-    // Function to display high scores
-    function displayHighScores() {
-        fetch('https://your-backend-url.com/high-scores')
-            .then(response => response.json())
-            .then(data => {
-                const highScoresList = document.getElementById('high-scores-list');
-                highScoresList.innerHTML = '';
-                data.forEach(entry => {
-                    const li = document.createElement('li');
-                    li.textContent = `${entry.username}: ${entry.score}`;
-                    highScoresList.appendChild(li);
-                });
-            })
-            .catch(error => {
-                console.error('Error fetching high scores:', error);
-            });
+        scoreElement.textContent = score;
     }
 
     // Event listener for tap button
@@ -51,18 +19,29 @@ document.addEventListener('DOMContentLoaded', function() {
         updateScore();
     });
 
-    // Event listener for save score button
-    document.getElementById('save-button').addEventListener('click', function() {
-        const username = document.getElementById('telegram-username').value;
-        if (username) {
-            saveScore(username, score);
-        } else {
-            alert('User information is missing.');
-        }
+    // Event listener for spin button
+    document.getElementById('spin-button').addEventListener('click', function() {
+        spinWheel();
     });
 
-    // Display high scores on page load
-    displayHighScores();
+    // Function to display and hide pages
+    function showPage(pageToShow) {
+        collectingPage.classList.add('hidden');
+        wheelPage.classList.add('hidden');
+        pageToShow.classList.remove('hidden');
+    }
+
+    // Show collecting page by default
+    showPage(collectingPage);
+
+    // Navigation button event listeners
+    showCollectingPageButton.addEventListener('click', function() {
+        showPage(collectingPage);
+    });
+
+    showWheelPageButton.addEventListener('click', function() {
+        showPage(wheelPage);
+    });
 
     // Function to spin the wheel
     function spinWheel() {
@@ -95,17 +74,4 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => wheel.style.transition = 'transform 4s ease-out', 100);
         }, { once: true });
     }
-
-    // Event listener for spin button
-    document.getElementById('spin-button').addEventListener('click', spinWheel);
-
-    // Fetch Telegram username and set it to hidden field
-    function fetchTelegramUsername() {
-        // This function would be replaced with actual Telegram username fetching logic
-        const username = window.Telegram.WebApp.initDataUnsafe?.user?.username || 'Anonymous';
-        document.getElementById('telegram-username').value = username;
-    }
-
-    // Call function to fetch Telegram username
-    fetchTelegramUsername();
 });
