@@ -1,81 +1,30 @@
-/* styles.css */
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #000; /* Black background */
-    color: #fff; /* White text */
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
-
-.game-container {
-    padding: 10px;
-    max-width: 90%;
-    margin: 0 auto;
-    background-color: #333; /* Dark grey background for the game container */
-    border-radius: 8px;
-    border: 1px solid #fff; /* White border */
-}
-
-h1 {
-    font-size: 1.8em;
-    margin-bottom: 20px;
-    color: #fff; /* White text */
-}
-
-.coin-container {
-    margin-bottom: 20px;
-}
-
-img#coin {
-    width: 80px; /* Adjust width for smaller screens */
-    height: auto; /* Maintain aspect ratio */
-    display: block;
-    margin: 0 auto;
-}
-
-.score {
-    margin-bottom: 20px;
-}
-
-.score p {
-    font-size: 1.2em;
-    color: #fff; /* White text */
-}
-
-button#tap-button {
-    background-color: #fff; /* White background */
-    color: #000; /* Black text */
-    border: 2px solid #fff; /* White border */
-    padding: 10px 15px; /* Adjust padding for mobile */
-    font-size: 1em;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-button#tap-button:hover {
-    background-color: #000; /* Black background on hover */
-    color: #fff; /* White text on hover */
-}
-
-/* Media Queries for Mobile Devices */
-@media (max-width: 600px) {
-    h1 {
-        font-size: 1.5em; /* Adjust heading size for smaller screens */
-    }
-
-    .coin-container img#coin {
-        width: 60px; /* Smaller coin image for mobile */
-    }
-
-    .score p {
-        font-size: 1em; /* Adjust score text size for smaller screens */
-    }
-
-    button#tap-button {
-        padding: 10px; /* Adjust button padding for mobile */
-        font-size: 0.9em; /* Adjust button font size for mobile */
-    }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensure proper scaling on mobile -->
+    <title>Earn Sins</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <header class="header">
+            <h1>Earn Sins</h1>
+            <p>Tap to collect coins and earn your sins!</p>
+        </header>
+        <div class="game-section">
+            <div class="coin-container">
+                <img src="coin.png" alt="Coin" id="coin" />
+            </div>
+            <div class="score">
+                <p>Coins Collected: <span id="score">0</span></p>
+            </div>
+            <button id="tap-button">Tap to Collect Coin</button>
+        </div>
+        <footer class="footer">
+            <p>&copy; 2024 Earn Sins. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
