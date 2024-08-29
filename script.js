@@ -49,4 +49,39 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Display high scores on page load
     displayHighScores();
+
+    // Function to spin the wheel
+    function spinWheel() {
+        const wheel = document.getElementById('wheel');
+        const resultText = document.getElementById('wheel-result');
+        const segments = [
+            '10 Coins',
+            '20 Coins',
+            '30 Coins',
+            '50 Coins',
+            '100 Coins',
+            'Try Again'
+        ];
+
+        // Generate a random index to determine the result
+        const resultIndex = Math.floor(Math.random() * segments.length);
+
+        // Set the result text
+        resultText.textContent = `You got: ${segments[resultIndex]}`;
+
+        // Add spinning animation
+        wheel.style.transition = 'transform 4s ease-out';
+        wheel.style.transform = `rotate(${360 * 5 + resultIndex * 60}deg)`;
+
+        // Reset the wheel after animation ends
+        wheel.addEventListener('transitionend', () => {
+            wheel.style.transition = 'none';
+            wheel.style.transform = 'rotate(0deg)';
+            // Reapply the transition for the next spin
+            setTimeout(() => wheel.style.transition = 'transform 4s ease-out', 100);
+        }, { once: true });
+    }
+
+    // Event listener for spin button
+    document.getElementById('spin-button').addEventListener('click', spinWheel);
 });
