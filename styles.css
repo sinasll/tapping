@@ -1,4 +1,5 @@
 /* styles.css */
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -55,19 +56,22 @@ button {
 
 .wheel-container {
     text-align: center;
+    margin: 20px auto;
 }
 
 .wheel {
     border: 10px solid #000;
     border-radius: 50%;
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     margin: 20px auto;
     position: relative;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .wheel-segment {
@@ -77,8 +81,21 @@ button {
     align-items: center;
     justify-content: center;
     position: absolute;
-    background-color: #fff;
+    font-size: 1.2rem;
     border: 1px solid #000;
+    font-weight: bold;
+    color: #000;
+    transition: background-color 0.3s ease;
+}
+
+.wheel-segment.black {
+    background-color: #000;
+    color: #fff;
+}
+
+.wheel-segment.white {
+    background-color: #fff;
+    color: #000;
 }
 
 .wheel-segment:nth-child(1) { transform: rotate(0deg); }
@@ -87,6 +104,19 @@ button {
 .wheel-segment:nth-child(4) { transform: rotate(180deg); }
 .wheel-segment:nth-child(5) { transform: rotate(240deg); }
 .wheel-segment:nth-child(6) { transform: rotate(300deg); }
+
+.wheel-segment::after {
+    content: '';
+    position: absolute;
+    border: 5px solid transparent;
+    border-left-color: #000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
 
 .navigation {
     display: flex;
