@@ -49,11 +49,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to spin the wheel
     function spinWheel() {
         const segments = [
-            '10 Sins',
-            '20 Sins',
-            '30 Sins',
-            '50 Sins',
-            '100 Sins',
+            '10 Coins',
+            '20 Coins',
+            '30 Coins',
+            '50 Coins',
+            '100 Coins',
             'Try Again'
         ];
 
