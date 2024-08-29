@@ -7,24 +7,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const wheelPage = document.getElementById('wheel-page');
     const showCollectingPageButton = document.getElementById('show-collecting-page');
     const showWheelPageButton = document.getElementById('show-wheel-page');
+    const wheel = document.getElementById('wheel');
+    const wheelResult = document.getElementById('wheel-result');
 
-    // Function to update score on screen
+    // Update score display
     function updateScore() {
         scoreElement.textContent = score;
     }
 
-    // Event listener for tap button
+    // Collect coin button click event
     document.getElementById('tap-button').addEventListener('click', function() {
         score++;
         updateScore();
+        saveScore(); // Save score with Telegram username
     });
 
-    // Event listener for spin button
+    // Spin wheel button click event
     document.getElementById('spin-button').addEventListener('click', function() {
         spinWheel();
     });
 
-    // Function to display and hide pages
+    // Show the selected page
     function showPage(pageToShow) {
         collectingPage.classList.add('hidden');
         wheelPage.classList.add('hidden');
@@ -45,8 +48,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to spin the wheel
     function spinWheel() {
-        const wheel = document.getElementById('wheel');
-        const resultText = document.getElementById('wheel-result');
         const segments = [
             '10 Coins',
             '20 Coins',
@@ -56,22 +57,28 @@ document.addEventListener('DOMContentLoaded', function() {
             'Try Again'
         ];
 
-        // Generate a random index to determine the result
         const resultIndex = Math.floor(Math.random() * segments.length);
 
-        // Set the result text
-        resultText.textContent = `You got: ${segments[resultIndex]}`;
+        wheelResult.textContent = `You got: ${segments[resultIndex]}`;
 
-        // Add spinning animation
         wheel.style.transition = 'transform 4s ease-out';
         wheel.style.transform = `rotate(${360 * 5 + resultIndex * 60}deg)`;
 
-        // Reset the wheel after animation ends
         wheel.addEventListener('transitionend', () => {
             wheel.style.transition = 'none';
             wheel.style.transform = 'rotate(0deg)';
-            // Reapply the transition for the next spin
             setTimeout(() => wheel.style.transition = 'transform 4s ease-out', 100);
         }, { once: true });
+    }
+
+    // Save score with Telegram username
+    function saveScore() {
+        const username = 'example_user'; // Replace with actual Telegram username
+        fetch('/save-score', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, score })
+        }).then(response => response.json())
+          .then(data => console.log(data.message));
     }
 });
