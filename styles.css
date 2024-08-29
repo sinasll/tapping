@@ -81,9 +81,8 @@ button {
     align-items: center;
     justify-content: center;
     position: absolute;
-    font-size: 1.2rem;
+    font-size: 0.8rem; /* Smaller font size */
     border: 1px solid #000;
-    font-weight: bold;
     color: #000;
     transition: background-color 0.3s ease;
 }
@@ -96,6 +95,11 @@ button {
 .wheel-segment.white {
     background-color: #fff;
     color: #000;
+}
+
+.wheel-segment .prize {
+    padding: 5px;
+    text-align: center;
 }
 
 .wheel-segment:nth-child(1) { transform: rotate(0deg); }
