@@ -8,25 +8,41 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('score').textContent = score;
     }
 
-    // Function to save score to local storage
+    // Function to save score to the backend
     function saveScore(username, score) {
-        let highScores = JSON.parse(localStorage.getItem('highScores')) || [];
-        highScores.push({ username, score });
-        highScores.sort((a, b) => b.score - a.score); // Sort by score descending
-        highScores = highScores.slice(0, 5); // Keep only top 5 scores
-        localStorage.setItem('highScores', JSON.stringify(highScores));
+        fetch('https://your-backend-url.com/save-score', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, score })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Score saved:', data);
+            displayHighScores(); // Refresh high scores list after saving
+        })
+        .catch(error => {
+            console.error('Error saving score:', error);
+        });
     }
 
     // Function to display high scores
     function displayHighScores() {
-        const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
-        const highScoresList = document.getElementById('high-scores-list');
-        highScoresList.innerHTML = '';
-        highScores.forEach(entry => {
-            const li = document.createElement('li');
-            li.textContent = `${entry.username}: ${entry.score}`;
-            highScoresList.appendChild(li);
-        });
+        fetch('https://your-backend-url.com/high-scores')
+            .then(response => response.json())
+            .then(data => {
+                const highScoresList = document.getElementById('high-scores-list');
+                highScoresList.innerHTML = '';
+                data.forEach(entry => {
+                    const li = document.createElement('li');
+                    li.textContent = `${entry.username}: ${entry.score}`;
+                    highScoresList.appendChild(li);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching high scores:', error);
+            });
     }
 
     // Event listener for tap button
@@ -37,13 +53,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Event listener for save score button
     document.getElementById('save-button').addEventListener('click', function() {
-        const username = document.getElementById('username').value.trim();
+        const username = document.getElementById('telegram-username').value;
         if (username) {
             saveScore(username, score);
-            displayHighScores();
-            document.getElementById('username').value = ''; // Clear the input field
         } else {
-            alert('Please enter your name.');
+            alert('User information is missing.');
         }
     });
 
@@ -84,4 +98,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Event listener for spin button
     document.getElementById('spin-button').addEventListener('click', spinWheel);
+
+    // Fetch Telegram username and set it to hidden field
+    function fetchTelegramUsername() {
+        // This function would be replaced with actual Telegram username fetching logic
+        const username = window.Telegram.WebApp.initDataUnsafe?.user?.username || 'Anonymous';
+        document.getElementById('telegram-username').value = username;
+    }
+
+    // Call function to fetch Telegram username
+    fetchTelegramUsername();
 });
